@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/puzzle-game/static/css/main.0dec4276.chunk.css",
+    "main.js": "/puzzle-game/static/js/main.763733aa.chunk.js",
+    "main.js.map": "/puzzle-game/static/js/main.763733aa.chunk.js.map",
+    "runtime-main.js": "/puzzle-game/static/js/runtime-main.a70e58f3.js",
+    "runtime-main.js.map": "/puzzle-game/static/js/runtime-main.a70e58f3.js.map",
+    "static/js/2.d8a4e8cd.chunk.js": "/puzzle-game/static/js/2.d8a4e8cd.chunk.js",
+    "static/js/2.d8a4e8cd.chunk.js.map": "/puzzle-game/static/js/2.d8a4e8cd.chunk.js.map",
+    "index.html": "/puzzle-game/index.html",
+    "precache-manifest.645a0691076d29a94442a7ec7d21672a.js": "/puzzle-game/precache-manifest.645a0691076d29a94442a7ec7d21672a.js",
+    "service-worker.js": "/puzzle-game/service-worker.js",
+    "static/css/main.0dec4276.chunk.css.map": "/puzzle-game/static/css/main.0dec4276.chunk.css.map",
+    "static/js/2.d8a4e8cd.chunk.js.LICENSE.txt": "/puzzle-game/static/js/2.d8a4e8cd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a70e58f3.js",
+    "static/js/2.d8a4e8cd.chunk.js",
+    "static/css/main.0dec4276.chunk.css",
+    "static/js/main.763733aa.chunk.js"
+  ]
+}
