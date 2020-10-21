@@ -9,6 +9,7 @@ class Solver extends Puzzle {
     }
     let closeSet: Dict = {};
     while (queue.length !== 0) {
+      // eslint-disable-next-line
       let [currentPz, gScore, hScore, step] = queue.shift();
       closeSet[JSON.stringify(currentPz)] = true;
       let nextChilds = this.generateChildNodes(currentPz, step);

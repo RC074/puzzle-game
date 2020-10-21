@@ -3,10 +3,22 @@ class Puzzle {
   puzzle: number[][];
   pzSolved: number[][];
 
-  constructor(size: 8 | 15, puzzle: number[][], pzSolved: number[][]) {
+  constructor(size: 8 | 15, puzzle: number[][]) {
     this.size = size;
     this.puzzle = puzzle;
-    this.pzSolved = pzSolved;
+    if (size === 8)
+      this.pzSolved = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 0],
+      ];
+    else
+      this.pzSolved = [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+        [13, 14, 15, 0],
+      ];
   }
 
   findTile = (tile: number, pz: number[][]) => {
