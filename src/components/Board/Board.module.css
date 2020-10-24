@@ -1,36 +1,12 @@
 .board {
-  background: rgba(0, 0, 0, 0.801);
+  background: rgba(22, 21, 21, 0.842);
   height: 32vw;
   width: 32vw;
-  border-radius: 20px;
-  position: relative;
-  text-align: center;
+  border-radius: 10px;
   color: #252b37;
-  animation: textColor 10s ease infinite;
   display: flex;
   justify-content: center;
-}
-
-.board:after {
-  position: absolute;
-  text-align: center;
-  content: "";
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  transform: scale(0.8);
-  -webkit-filter: blur(5vw);
-  -moz-filter: blur(5vw);
-  -ms-filter: blur(5vw);
-  filter: blur(5vw);
-  background: linear-gradient(270deg, #0fffc1, #7e0fff);
-  background-size: 200% 200%;
-  animation: animateGlow 10s ease infinite;
+  box-shadow: 0 38px 76px rgba(0,0,0,0.30), 0 30px 24px rgba(0,0,0,0.22);
 }
 
 .rows {
@@ -46,6 +22,7 @@
 }
 
 .tiles {
+  font-weight: 900;
   text-align: center;
   float: left;
   padding: 0;
@@ -53,33 +30,11 @@
   font-size: 4vw;
   width: 8.3vw;
   margin: 0.5vw;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.123);
+  border-radius: 10px;
+  background-color: #cacdd4;
+  position: relative;
 }
 
 .tiles:hover {
   cursor: pointer;
-}
-
-@keyframes animateGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-@keyframes textColor {
-  0% {
-    color: #7e0fff;
-  }
-  50% {
-    color: #0fffc1;
-  }
-  100% {
-    color: #7e0fff;
-  }
 }

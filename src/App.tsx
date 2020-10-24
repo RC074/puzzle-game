@@ -9,7 +9,15 @@ import "./body.css";
 import styled from "./App.module.css";
 
 class App extends React.Component<{}> {
-  componentDidMount() {}
+  componentDidMount() {
+    let pz = new Solver(15, [
+      [1, 2, 3, 4],
+      [5, 6, 7, 8],
+      [15, 10, 11, 12],
+      [13, 0, 9, 14],
+    ]);
+    console.log(pz.AStar());
+  }
 
   render() {
     return (
