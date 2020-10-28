@@ -1,0 +1,23 @@
+.container {
+  height: 30vw;
+  width: 20vw;
+  border-top: 0.5vw solid black;
+  border-bottom: 0.5vw solid black;
+  position: absolute;
+  left: 13vw;
+  margin-top: 0.5vw;
+  justify-content: center;
+
+}
+
+.display {
+  box-shadow: 0 38px 76px rgba(0,0,0,0.30), 0 30px 24px rgba(0,0,0,0.22);
+  align-self: center;
+  width: 18.5vw;
+  margin: auto;
+  padding: 0;
+  height: 31vw;
+  position: relative;
+  bottom: 0.5vw;
+  background-color: rgba(0, 0, 0, 0.801);
+}

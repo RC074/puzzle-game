@@ -8,17 +8,20 @@ import Puzzle from "../../utils/Puzzle";
 import styled from "./Board.module.css";
 
 
-type BoardProps = {};
+type BoardProps = {
+  board: number[][];
+  swap: (col: number, row: number, col2: number, row2: number) => void;
+  isSolving: boolean;
+};
 
-const Board: React.FC<BoardProps> = () => {
+const timeOut = (ms: number) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-  const [board, setBoard] = useState([
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 0],
-  ]);
+const Board: React.FC<BoardProps> = ({board, swap, isSolving}) => {
 
   const [isClickable, setIsClickable] = useState(true);
+  const [inSolvingProcess, setInSolvingProcess] = useState(false);
 
   const [tileStyle, setTileStyle] = useState(
     [
@@ -34,10 +37,29 @@ const Board: React.FC<BoardProps> = () => {
     ]
   )
 
+  useEffect(() => {
+    if (isSolving && !inSolvingProcess) {
+      console.log(isSolving);
+      let pz = new Solver(8, board);
+      commandsLoader(pz.AStar())
+      setInSolvingProcess(true);
+    }
+  })
+
+  const commandsLoader = async (sequence : string) => {
+    for (let i = 0; i < sequence.length; i++) {
+      let [y, x] = findTile(0);
+      if (sequence[i] === 'u') y--;
+      if (sequence[i] === 'd') y++;
+      if (sequence[i] === 'r') x++;
+      if (sequence[i] === 'l') x--;
+      handleTileClick(y, x);
+      await timeOut(500);
+    }
+  }
+
   const swapTiles = (col : number, row : number, col2 : number, row2 : number) => {
-    let tempBoard = board;
-    [tempBoard[col][row], tempBoard[col2][row2]] = [tempBoard[col2][row2], tempBoard[col][row]]
-    setBoard([...tempBoard]);
+    swap(col, row, col2, row2);
   }
 
   const findTile = (tile : number) => {
@@ -58,7 +80,7 @@ const Board: React.FC<BoardProps> = () => {
     }
     let styles: Dict = {};
     if (tileStyle[n] === 0) {
-      styles = {left: '0', right: '0', top: '0', bottom: '0'};
+      styles = {left: '0vw', right: '0vw', top: '0vw', bottom: '0vw'};
     }
     if (tileStyle[n] === 3) {
       styles = {bottom: '9.3vw', transition: 'bottom 0.5s'};
@@ -81,8 +103,9 @@ const Board: React.FC<BoardProps> = () => {
   const handleTileClick = (col : number, row : number) => {
     if (!isClickable) return;
     if (isSwappable(col, row)) {
+      
       let [y, x] = findTile(0);
-      let tempTileStyle = tileStyle
+      let tempTileStyle = [...tileStyle]
       
       if (y === col && x > row) {
         tempTileStyle[0] = 2;

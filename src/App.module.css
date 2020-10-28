@@ -1,0 +1,21 @@
+.start {
+  height: 32vw;
+  width: 32vw;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.801);
+  font-size: 7vw;
+  z-index: 1;
+  font-family: CeliaGarcia, Calibri, sans-serif;
+  border: none;
+  color: #cacdd4;
+  border-radius: 10px;
+  outline: none;
+  transition: color 0.5s;
+  font-style: italic;
+  text-align: center;
+}
+
+.start:hover {
+  cursor: pointer;
+  color:  #ffffff;
+}

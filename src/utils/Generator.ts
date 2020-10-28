@@ -1,46 +1,50 @@
 import Puzzle from "./Puzzle";
 
 class Generator extends Puzzle {
-  private puzzleG: number[][] = [[]];
 
   constructor(size: 8 | 15) {
     super(size, [[]]);
   }
 
-  makeFrom = () => {
-    if (this.size === 8) {
-      this.puzzleG = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 0],
-      ];
-    } else {
-      this.puzzleG = [
-        [1, 2, 3, 4],
-        [5, 6, 7, 8],
-        [9, 10, 11, 12],
-        [13, 14, 15, 0],
-      ];
-    }
-  };
+  shuffle = (arr: number[]) => {
+    var j, x, i;
+    for (i = arr.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = arr[i];
+      arr[i] = arr[j];
+      arr[j] = x;
+  }
+  return arr;
+  }
 
   make = () => {
-    this.makeFrom();
-    interface Dict {
-      [key: string]: boolean;
-    }
-    let prevStates: Dict = {};
-    for (let i = 0; i < Math.floor(Math.random() * 50) + 10; i++) {
-      let newMoves = this.generateChildNodes(this.puzzleG, "");
-      for (let j = 0; j < newMoves.length; j++) {
-        if (prevStates[JSON.stringify(newMoves[j][0])] !== true) {
-          this.puzzleG = newMoves[j][0];
-          prevStates[JSON.stringify(newMoves[j][0])] = true;
-          break;
+    while (true) {
+      let potentialPz = this.shuffle([1, 2, 3, 4, 5, 6, 7, 8, 0]);
+
+      // checks solvability
+      let sum = 0;
+      for (let i = 0; i < 8; i++) {
+        if (potentialPz[i] === 0) continue;
+        for (let j = i+1; j < 9; j++) {
+          if (potentialPz[j] === 0) continue;
+          if (potentialPz[i] > potentialPz[j]) {
+            sum++;
+          }
         }
       }
+      if (sum % 2 === 0) {
+        let pz: number[][] = [];
+        for (let i = 0; i < 9; i+=3) {
+          let temp = []
+          for (let j = i; j < i + 3; j++) {
+            temp.push(potentialPz[j]);
+          }
+          pz.push(temp);
+        }
+        return pz;
+      }
+      continue;
     }
-    return this.puzzleG;
   };
 }
 
