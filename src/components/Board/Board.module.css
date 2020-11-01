@@ -1,12 +1,12 @@
 .board {
-  background: rgba(22, 21, 21, 0.842);
+  background: rgba(15, 14, 14, 0.932);
   height: 32vw;
   width: 32vw;
   border-radius: 10px;
   color: #252b37;
   display: flex;
   justify-content: center;
-  box-shadow: 0 38px 76px rgba(0,0,0,0.30), 0 30px 24px rgba(0,0,0,0.22);
+  box-shadow: 0 38px 76px rgba(0, 0, 0, 0.3), 0 30px 24px rgba(0, 0, 0, 0.22);
 }
 
 .rows {
