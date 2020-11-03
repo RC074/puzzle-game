@@ -14,13 +14,22 @@ type BoardProps = {
   showPanel: (bool: boolean) => void;
   finishedSolving: () => void;
   toggleInitialState: (bool: boolean) => void;
+  solvedByPlayer: (bool: boolean) => void;
 };
 
 const timeOut = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-const Board: React.FC<BoardProps> = ({ board, swap, isPlaying, showPanel, finishedSolving, toggleInitialState }) => {
+const Board: React.FC<BoardProps> = ({
+  board,
+  swap,
+  isPlaying,
+  showPanel,
+  finishedSolving,
+  toggleInitialState,
+  solvedByPlayer,
+}) => {
   const [isClickable, setIsClickable] = useState(true);
   const [inSolvingProcess, setInSolvingProcess] = useState(false);
 
@@ -34,7 +43,7 @@ const Board: React.FC<BoardProps> = ({ board, swap, isPlaying, showPanel, finish
         if (sequence[i] === "d") y++;
         if (sequence[i] === "r") x++;
         if (sequence[i] === "l") x--;
-        handleTileClick(y, x);
+        handleTileClick(y, x, false);
         await timeOut(500);
       }
       finishedSolving();
@@ -94,7 +103,7 @@ const Board: React.FC<BoardProps> = ({ board, swap, isPlaying, showPanel, finish
     return styles;
   };
 
-  const handleTileClick = (col: number, row: number) => {
+  const handleTileClick = (col: number, row: number, player: boolean) => {
     if (!isClickable) return;
     if (isSwappable(col, row)) {
       let [y, x] = findTile(0);
@@ -122,7 +131,6 @@ const Board: React.FC<BoardProps> = ({ board, swap, isPlaying, showPanel, finish
       setTimeout(() => {
         setTileStyle([0, 0, 0, 0, 0, 0, 0, 0, 0]);
         swapTiles(col, row, y, x);
-        console.log(board);
         if (
           JSON.stringify(board) ===
           JSON.stringify([
@@ -131,6 +139,7 @@ const Board: React.FC<BoardProps> = ({ board, swap, isPlaying, showPanel, finish
             [7, 8, 0],
           ])
         ) {
+          if (player) solvedByPlayer(true);
           toggleInitialState(false);
         }
         setIsClickable(true);
@@ -141,31 +150,31 @@ const Board: React.FC<BoardProps> = ({ board, swap, isPlaying, showPanel, finish
   return (
     <div className={styled.board}>
       <ul className={styled.rows}>
-        <li className={styled.tiles} style={getStyle(board[0][0])} onClick={() => handleTileClick(0, 0)}>
+        <li className={styled.tiles} style={getStyle(board[0][0])} onClick={() => handleTileClick(0, 0, true)}>
           {board[0][0] === 0 ? "" : board[0][0]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[0][1])} onClick={() => handleTileClick(0, 1)}>
+        <li className={styled.tiles} style={getStyle(board[0][1])} onClick={() => handleTileClick(0, 1, true)}>
           {board[0][1] === 0 ? "" : board[0][1]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[0][2])} onClick={() => handleTileClick(0, 2)}>
+        <li className={styled.tiles} style={getStyle(board[0][2])} onClick={() => handleTileClick(0, 2, true)}>
           {board[0][2] === 0 ? "" : board[0][2]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[1][0])} onClick={() => handleTileClick(1, 0)}>
+        <li className={styled.tiles} style={getStyle(board[1][0])} onClick={() => handleTileClick(1, 0, true)}>
           {board[1][0] === 0 ? "" : board[1][0]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[1][1])} onClick={() => handleTileClick(1, 1)}>
+        <li className={styled.tiles} style={getStyle(board[1][1])} onClick={() => handleTileClick(1, 1, true)}>
           {board[1][1] === 0 ? "" : board[1][1]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[1][2])} onClick={() => handleTileClick(1, 2)}>
+        <li className={styled.tiles} style={getStyle(board[1][2])} onClick={() => handleTileClick(1, 2, true)}>
           {board[1][2] === 0 ? "" : board[1][2]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[2][0])} onClick={() => handleTileClick(2, 0)}>
+        <li className={styled.tiles} style={getStyle(board[2][0])} onClick={() => handleTileClick(2, 0, true)}>
           {board[2][0] === 0 ? "" : board[2][0]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[2][1])} onClick={() => handleTileClick(2, 1)}>
+        <li className={styled.tiles} style={getStyle(board[2][1])} onClick={() => handleTileClick(2, 1, true)}>
           {board[2][1] === 0 ? "" : board[2][1]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[2][2])} onClick={() => handleTileClick(2, 2)}>
+        <li className={styled.tiles} style={getStyle(board[2][2])} onClick={() => handleTileClick(2, 2, true)}>
           {board[2][2] === 0 ? "" : board[2][2]}
         </li>
       </ul>

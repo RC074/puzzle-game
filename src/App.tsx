@@ -17,6 +17,8 @@ interface AppState {
   isInitial: boolean;
   showPanel: boolean;
   bodyColor: boolean;
+  solvedByPlayer: boolean;
+  timeList: number[];
 }
 
 class App extends React.Component<{}, AppState> {
@@ -24,32 +26,45 @@ class App extends React.Component<{}, AppState> {
     board: [
       [1, 2, 3],
       [4, 5, 6],
-      [7, 8, 9],
+      [7, 8, 0],
     ],
     isPlaying: false,
     isInitial: true,
     showPanel: false,
     bodyColor: false,
+    timeList: [],
+    solvedByPlayer: false,
   };
 
-  componentDidMount() {
-    let new_pz = new Generator(8).make();
-    this.setState({ board: new_pz });
-  }
-
   restart = () => {
-    let new_pz = new Generator(8).make();
-    this.setState({ board: new_pz });
     this.toggleInitialState(false);
   };
 
+  appendToTimeList = (time: number) => {
+    console.log(this.state.solvedByPlayer);
+    if (this.state.solvedByPlayer) {
+      let temp: number[] = [...this.state.timeList];
+      temp.push(time);
+      this.setState({ timeList: temp });
+      this.setState({ solvedByPlayer: false });
+    }
+  };
+
   toggleInitialState = (bool: boolean) => {
+    if (bool) {
+      let new_pz = new Generator(8).make();
+      this.setState({ board: new_pz });
+    }
     this.setState({ isInitial: !this.state.isInitial });
     this.togglePanel(bool);
   };
 
   togglePanel = (bool: boolean) => {
     this.setState({ showPanel: bool });
+  };
+
+  toggleSolvedByPlayer = (bool: boolean) => {
+    this.setState({ solvedByPlayer: bool });
   };
 
   toggleBodyColor = () => {
@@ -82,8 +97,13 @@ class App extends React.Component<{}, AppState> {
           ) : (
             ""
           )}
-          <Records />
-          <Functions showPanel={this.state.showPanel} isSolving={this.handleSolve} restart={this.restart} />
+          <Records timeList={this.state.timeList} />
+          <Functions
+            showPanel={this.state.showPanel}
+            isSolving={this.handleSolve}
+            restart={this.restart}
+            appendTime={(time) => this.appendToTimeList(time)}
+          />
           <Board
             board={this.state.board}
             swap={(col, row, col2, row2) => this.handleSwapTiles(col, row, col2, row2)}
@@ -91,6 +111,7 @@ class App extends React.Component<{}, AppState> {
             showPanel={(bool) => this.togglePanel(bool)}
             toggleInitialState={(bool) => this.toggleInitialState(bool)}
             finishedSolving={this.handleFinishedSolving}
+            solvedByPlayer={(bool) => this.toggleSolvedByPlayer(bool)}
           />
         </div>
         <div className="toggle-wrapper">

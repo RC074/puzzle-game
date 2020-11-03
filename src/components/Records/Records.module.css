@@ -7,17 +7,38 @@
   left: 13vw;
   margin-top: 0.5vw;
   justify-content: center;
-
+  font-family: CeliaGarcia, Calibri, sans-serif;
 }
 
 .display {
-  box-shadow: 0 38px 76px rgba(0,0,0,0.30), 0 30px 24px rgba(0,0,0,0.22);
+  box-shadow: 0 38px 76px rgba(0, 0, 0, 0.3), 0 30px 24px rgba(0, 0, 0, 0.22);
   align-self: center;
   width: 18.5vw;
   margin: auto;
   padding: 0;
   height: 31vw;
   position: relative;
+  overflow-y: scroll;
   bottom: 0.5vw;
   background-color: rgba(0, 0, 0, 0.801);
+}
+
+.display::-webkit-scrollbar {
+  display: none;
+}
+
+.title {
+  color: #cacdd4;
+  font-size: 2.5vw;
+  text-align: center;
+  margin: 1vw;
+}
+
+.record {
+  color: #cacdd4;
+  text-align: center;
+  margin: 1vw;
+  height: 2vw;
+  font-size: 1.5vw;
+  background-color: rgba(0, 0, 0, 0.363);
 }
