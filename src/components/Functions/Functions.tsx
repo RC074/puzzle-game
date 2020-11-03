@@ -18,9 +18,11 @@ const Functions: React.FC<FunctionsProps> = ({ showPanel, isSolving, restart, ap
   const [timerTime, setTimerTime] = useState(0);
   const [btnVisibility, setBtnVisibility] = useState(false);
   const [menuWidth, setMenuWidth] = useState(false);
+  const [clickable, setClickable] = useState(true);
 
   useEffect(() => {
     const toggleVisibility = async () => {
+      setClickable(false);
       if (showPanel === true) {
         startTimer();
         await timeOut(300);
@@ -29,16 +31,19 @@ const Functions: React.FC<FunctionsProps> = ({ showPanel, isSolving, restart, ap
         setTimerTime(0);
         clearInterval(timerInterval);
       }
+      console.log(showPanel);
       setBtnVisibility(showPanel ? true : false);
+      setClickable(true);
     };
     const toggleMenuWidth = async () => {
-      if (showPanel !== true) {
-        await timeOut(500);
-      }
+      setClickable(false);
       setMenuWidth(showPanel ? true : false);
+      setClickable(true);
     };
-    toggleVisibility();
-    toggleMenuWidth();
+    if (clickable) {
+      toggleVisibility();
+      toggleMenuWidth();
+    }
   }, [showPanel]);
 
   const startTimer = () => {

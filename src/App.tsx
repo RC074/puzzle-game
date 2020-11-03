@@ -20,7 +20,9 @@ interface AppState {
   solvedByPlayer: boolean;
   timeList: number[];
 }
-
+const timeOut = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
 class App extends React.Component<{}, AppState> {
   state = {
     board: [
@@ -36,7 +38,9 @@ class App extends React.Component<{}, AppState> {
     solvedByPlayer: false,
   };
 
-  restart = () => {
+  restart = async () => {
+    this.togglePanel(false);
+    await timeOut(500);
     this.toggleInitialState(false);
   };
 
