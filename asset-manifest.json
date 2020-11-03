@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/puzzle-game/static/css/main.c1cf4f87.chunk.css",
-    "main.js": "/puzzle-game/static/js/main.20383f6e.chunk.js",
-    "main.js.map": "/puzzle-game/static/js/main.20383f6e.chunk.js.map",
+    "main.css": "/puzzle-game/static/css/main.9cd4003f.chunk.css",
+    "main.js": "/puzzle-game/static/js/main.7dc3a8d9.chunk.js",
+    "main.js.map": "/puzzle-game/static/js/main.7dc3a8d9.chunk.js.map",
     "runtime-main.js": "/puzzle-game/static/js/runtime-main.a70e58f3.js",
     "runtime-main.js.map": "/puzzle-game/static/js/runtime-main.a70e58f3.js.map",
-    "static/js/2.86763f32.chunk.js": "/puzzle-game/static/js/2.86763f32.chunk.js",
-    "static/js/2.86763f32.chunk.js.map": "/puzzle-game/static/js/2.86763f32.chunk.js.map",
+    "static/js/2.3a249187.chunk.js": "/puzzle-game/static/js/2.3a249187.chunk.js",
+    "static/js/2.3a249187.chunk.js.map": "/puzzle-game/static/js/2.3a249187.chunk.js.map",
     "index.html": "/puzzle-game/index.html",
-    "precache-manifest.7dff7ef20d7a0a7d35c97d00f81ab497.js": "/puzzle-game/precache-manifest.7dff7ef20d7a0a7d35c97d00f81ab497.js",
+    "precache-manifest.c676f10c52a4008c29fc8372aebcab35.js": "/puzzle-game/precache-manifest.c676f10c52a4008c29fc8372aebcab35.js",
     "service-worker.js": "/puzzle-game/service-worker.js",
-    "static/css/main.c1cf4f87.chunk.css.map": "/puzzle-game/static/css/main.c1cf4f87.chunk.css.map",
-    "static/js/2.86763f32.chunk.js.LICENSE.txt": "/puzzle-game/static/js/2.86763f32.chunk.js.LICENSE.txt"
+    "static/css/main.9cd4003f.chunk.css.map": "/puzzle-game/static/css/main.9cd4003f.chunk.css.map",
+    "static/js/2.3a249187.chunk.js.LICENSE.txt": "/puzzle-game/static/js/2.3a249187.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a70e58f3.js",
-    "static/js/2.86763f32.chunk.js",
-    "static/css/main.c1cf4f87.chunk.css",
-    "static/js/main.20383f6e.chunk.js"
+    "static/js/2.3a249187.chunk.js",
+    "static/css/main.9cd4003f.chunk.css",
+    "static/js/main.7dc3a8d9.chunk.js"
   ]
 }
