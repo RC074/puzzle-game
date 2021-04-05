@@ -15,7 +15,6 @@ const formatTime = (ms: number) => {
 
 const Records: React.FC<RecordsProps> = ({ timeList }) => {
   const DisplayRecords = () => {
-    console.log(timeList);
     timeList.sort();
     const sortedTimeList = timeList.map((val, i) => (
       <div key={i} className={styled.record}>

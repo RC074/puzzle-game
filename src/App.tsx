@@ -45,7 +45,6 @@ class App extends React.Component<{}, AppState> {
   };
 
   appendToTimeList = (time: number) => {
-    console.log(this.state.solvedByPlayer);
     if (this.state.solvedByPlayer) {
       let temp: number[] = [...this.state.timeList];
       temp.push(time);
@@ -73,12 +72,17 @@ class App extends React.Component<{}, AppState> {
 
   toggleBodyColor = () => {
     this.setState({ bodyColor: !this.state.bodyColor });
-    document.body.style.background = this.state.bodyColor ? "#cacdd4" : "#27282a";
+    document.body.style.background = this.state.bodyColor
+      ? "#cacdd4"
+      : "#27282a";
   };
 
   handleSwapTiles = (col: number, row: number, col2: number, row2: number) => {
     let tempBoard = this.state.board;
-    [tempBoard[col][row], tempBoard[col2][row2]] = [tempBoard[col2][row2], tempBoard[col][row]];
+    [tempBoard[col][row], tempBoard[col2][row2]] = [
+      tempBoard[col2][row2],
+      tempBoard[col][row],
+    ];
     this.setState({ board: tempBoard });
   };
 
@@ -95,7 +99,10 @@ class App extends React.Component<{}, AppState> {
       <div>
         <div>
           {this.state.isInitial ? (
-            <button className={styled.start} onClick={() => this.toggleInitialState(true)}>
+            <button
+              className={styled.start}
+              onClick={() => this.toggleInitialState(true)}
+            >
               START
             </button>
           ) : (
@@ -110,7 +117,9 @@ class App extends React.Component<{}, AppState> {
           />
           <Board
             board={this.state.board}
-            swap={(col, row, col2, row2) => this.handleSwapTiles(col, row, col2, row2)}
+            swap={(col, row, col2, row2) =>
+              this.handleSwapTiles(col, row, col2, row2)
+            }
             isPlaying={this.state.isPlaying}
             showPanel={(bool) => this.togglePanel(bool)}
             toggleInitialState={(bool) => this.toggleInitialState(bool)}

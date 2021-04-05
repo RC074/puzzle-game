@@ -13,7 +13,12 @@ const timeOut = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-const Functions: React.FC<FunctionsProps> = ({ showPanel, isSolving, restart, appendTime }) => {
+const Functions: React.FC<FunctionsProps> = ({
+  showPanel,
+  isSolving,
+  restart,
+  appendTime,
+}) => {
   const [timerInterval, setTimerInterval] = useState<any>();
   const [timerTime, setTimerTime] = useState(0);
   const [btnVisibility, setBtnVisibility] = useState(false);
@@ -31,7 +36,6 @@ const Functions: React.FC<FunctionsProps> = ({ showPanel, isSolving, restart, ap
         setTimerTime(0);
         clearInterval(timerInterval);
       }
-      console.log(showPanel);
       setBtnVisibility(showPanel ? true : false);
       setClickable(true);
     };
@@ -47,7 +51,6 @@ const Functions: React.FC<FunctionsProps> = ({ showPanel, isSolving, restart, ap
   }, [showPanel]);
 
   const startTimer = () => {
-    console.log("hi");
     const interval = setInterval(() => {
       setTimerTime((timerTime) => timerTime + 1000);
     }, 1000);
@@ -55,6 +58,9 @@ const Functions: React.FC<FunctionsProps> = ({ showPanel, isSolving, restart, ap
   };
 
   const timer = () => {
+    if (timerTime === 3599000) {
+      clearInterval(timerInterval);
+    }
     let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
     let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2);
     return minutes + ":" + seconds;
@@ -69,17 +75,28 @@ const Functions: React.FC<FunctionsProps> = ({ showPanel, isSolving, restart, ap
   };
 
   return (
-    <div className={styled.container} style={{ width: menuWidth ? "12vw" : "0" }}>
-      <div className={styled.timer} style={{ visibility: btnVisibility ? "visible" : "hidden" }}>
+    <div
+      className={styled.container}
+      style={{ width: menuWidth ? "12vw" : "0" }}
+    >
+      <div
+        className={styled.timer}
+        style={{ visibility: btnVisibility ? "visible" : "hidden" }}
+      >
         {timer()}
       </div>
-      <button className={styled.btn} onClick={handleSolve} style={{ visibility: btnVisibility ? "visible" : "hidden" }}>
+      <button
+        className={styled.btn}
+        onClick={handleSolve}
+        style={{ visibility: btnVisibility ? "visible" : "hidden" }}
+      >
         Solve
       </button>
       <button
         className={styled.btn}
         onClick={handleRestart}
-        style={{ visibility: btnVisibility ? "visible" : "hidden" }}>
+        style={{ visibility: btnVisibility ? "visible" : "hidden" }}
+      >
         Restart
       </button>
     </div>
