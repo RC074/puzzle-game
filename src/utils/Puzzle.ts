@@ -1,24 +1,18 @@
+// Puzzle.ts
+
 class Puzzle {
-  size: 8 | 15;
+  size: 8;
   puzzle: number[][];
   pzSolved: number[][];
 
-  constructor(size: 8 | 15, puzzle: number[][]) {
+  constructor(size: 8, puzzle: number[][]) {
     this.size = size;
     this.puzzle = puzzle;
-    if (size === 8)
-      this.pzSolved = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 0],
-      ];
-    else
-      this.pzSolved = [
-        [1, 2, 3, 4],
-        [5, 6, 7, 8],
-        [9, 10, 11, 12],
-        [13, 14, 15, 0],
-      ];
+    this.pzSolved = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 0],
+    ];
   }
 
   findTile = (tile: number, pz: number[][]) => {
@@ -31,10 +25,6 @@ class Puzzle {
   };
 
   generateChildNodes = (puzzle: number[][], prevMoves: string) => {
-    let tb = {
-      8: 2,
-      15: 3,
-    };
     let childNodes = [];
     let [y, x] = this.findTile(0, puzzle);
     if (x > 0) {
@@ -43,7 +33,7 @@ class Puzzle {
       [newNode[y][x - 1], newNode[y][x]] = [newNode[y][x], newNode[y][x - 1]];
       childNodes.push([newNode, prevMoves + "l"]);
     }
-    if (x < tb[this.size]) {
+    if (x < 2) {
       let newNode = JSON.parse(JSON.stringify(puzzle));
       [newNode[y][x + 1], newNode[y][x]] = [newNode[y][x], newNode[y][x + 1]];
       childNodes.push([newNode, prevMoves + "r"]);
@@ -53,7 +43,7 @@ class Puzzle {
       [newNode[y - 1][x], newNode[y][x]] = [newNode[y][x], newNode[y - 1][x]];
       childNodes.push([newNode, prevMoves + "u"]);
     }
-    if (y < tb[this.size]) {
+    if (y < 2) {
       let newNode = JSON.parse(JSON.stringify(puzzle));
       [newNode[y + 1][x], newNode[y][x]] = [newNode[y][x], newNode[y + 1][x]];
       childNodes.push([newNode, prevMoves + "d"]);
@@ -66,10 +56,13 @@ class Puzzle {
     for (let val = 0; val <= this.size; val++) {
       let c_pos = this.findTile(val, puzzle);
       let f_pos = this.findTile(val, this.pzSolved);
-      let y_d = Math.abs(c_pos[0] - f_pos[0]);
-      let x_d = Math.abs(c_pos[1] - f_pos[1]);
-      score += x_d + y_d;
+      if (!(c_pos === f_pos)) {
+        let y_d = Math.abs(c_pos[0] - f_pos[0]);
+        let x_d = Math.abs(c_pos[1] - f_pos[1]);
+        score += x_d + y_d;
+      }
     }
+    console.log(score);
     return score;
   };
 }

@@ -1,12 +1,10 @@
+// App.tsx
+
 import React from "react";
-
-import Solver from "./utils/Solver";
 import Generator from "./utils/Generator";
-
 import Board from "./components/Board/Board";
 import Records from "./components/Records/Records";
 import Functions from "./components/Functions/Functions";
-
 import "./body.css";
 import "./toggle.css";
 import styled from "./App.module.css";

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+// Functions.tsx
 
+import React, { useState, useEffect } from "react";
 import styled from "./Functions.module.css";
 
 interface FunctionsProps {

@@ -1,3 +1,5 @@
+/* App.module.css */
+
 .start {
   height: 32vw;
   width: 32vw;
@@ -17,6 +19,5 @@
 
 .start:hover {
   cursor: pointer;
-  color:  #ffffff;
+  color: #ffffff;
 }
-

@@ -1,10 +1,8 @@
+// Board.tsx
+
 import React, { useState, useEffect, useCallback } from "react";
-import CSS from "csstype";
-
 import Solver from "../../utils/Solver";
-import Generator from "../../utils/Generator";
 import Puzzle from "../../utils/Puzzle";
-
 import styled from "./Board.module.css";
 
 type BoardProps = {
@@ -150,31 +148,67 @@ const Board: React.FC<BoardProps> = ({
   return (
     <div className={styled.board}>
       <ul className={styled.rows}>
-        <li className={styled.tiles} style={getStyle(board[0][0])} onClick={() => handleTileClick(0, 0, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[0][0])}
+          onClick={() => handleTileClick(0, 0, true)}
+        >
           {board[0][0] === 0 ? "" : board[0][0]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[0][1])} onClick={() => handleTileClick(0, 1, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[0][1])}
+          onClick={() => handleTileClick(0, 1, true)}
+        >
           {board[0][1] === 0 ? "" : board[0][1]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[0][2])} onClick={() => handleTileClick(0, 2, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[0][2])}
+          onClick={() => handleTileClick(0, 2, true)}
+        >
           {board[0][2] === 0 ? "" : board[0][2]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[1][0])} onClick={() => handleTileClick(1, 0, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[1][0])}
+          onClick={() => handleTileClick(1, 0, true)}
+        >
           {board[1][0] === 0 ? "" : board[1][0]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[1][1])} onClick={() => handleTileClick(1, 1, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[1][1])}
+          onClick={() => handleTileClick(1, 1, true)}
+        >
           {board[1][1] === 0 ? "" : board[1][1]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[1][2])} onClick={() => handleTileClick(1, 2, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[1][2])}
+          onClick={() => handleTileClick(1, 2, true)}
+        >
           {board[1][2] === 0 ? "" : board[1][2]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[2][0])} onClick={() => handleTileClick(2, 0, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[2][0])}
+          onClick={() => handleTileClick(2, 0, true)}
+        >
           {board[2][0] === 0 ? "" : board[2][0]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[2][1])} onClick={() => handleTileClick(2, 1, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[2][1])}
+          onClick={() => handleTileClick(2, 1, true)}
+        >
           {board[2][1] === 0 ? "" : board[2][1]}
         </li>
-        <li className={styled.tiles} style={getStyle(board[2][2])} onClick={() => handleTileClick(2, 2, true)}>
+        <li
+          className={styled.tiles}
+          style={getStyle(board[2][2])}
+          onClick={() => handleTileClick(2, 2, true)}
+        >
           {board[2][2] === 0 ? "" : board[2][2]}
         </li>
       </ul>

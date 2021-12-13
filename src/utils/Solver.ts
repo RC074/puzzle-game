@@ -1,9 +1,13 @@
+// Solver.ts
+
 import Puzzle from "./Puzzle";
 
 class Solver extends Puzzle {
   AStar = () => {
     let gScore: number = 0;
+
     let queue: any = [[this.puzzle, gScore, this.manhattan(this.puzzle), ""]];
+
     interface Dict {
       [key: string]: boolean;
     }
@@ -22,7 +26,9 @@ class Solver extends Puzzle {
           queue.push([
             nextChilds[i][0],
             gScore + 1,
+
             this.manhattan(nextChilds[i][0]),
+
             nextChilds[i][1],
           ]);
         }
