@@ -4,6 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 #[https://rc074.github.io/puzzle-game/](https://rc074.github.io/puzzle-game/)
 
+### screenshot
+![image](https://user-images.githubusercontent.com/63427503/208339283-c11a171b-73e9-4773-a8ff-ea9c55efdd3b.png)
+
+win the game by ordering tiles from 1 to 8
+
 ## Available Scripts
 
 In the project directory, you can run:
